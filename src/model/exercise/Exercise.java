@@ -1,6 +1,8 @@
-package model;
+package model.exercise;
 
 import java.util.List;
+
+import model.Muscles;
 
 /**
  * An interface representing a single exercise.

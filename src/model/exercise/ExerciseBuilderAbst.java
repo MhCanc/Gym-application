@@ -1,6 +1,8 @@
-package model;
+package model.exercise;
 
 import java.util.List;
+
+import model.Muscles;
 
 /**
  * An abstract method that allows for the building of an exercise object.
