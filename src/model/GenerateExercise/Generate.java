@@ -9,7 +9,7 @@ import model.exercise.Exercise;
  */
 public interface Generate {
   /**
-   * A method that adds a new exercise to the file.
+   * A method that adds a new exercise to the file is a "exercise-description-muscle list" format.
    * @param exercise The exercise being added to the file.
    * @throws IllegalArgumentException Thrown when an exercise with the same name already exists.
    */

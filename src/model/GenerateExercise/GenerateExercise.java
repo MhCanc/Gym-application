@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import model.Muscles;
 import model.exercise.Exercise;
 import model.exercise.ExerciseBuild;
 
@@ -19,6 +20,10 @@ public class GenerateExercise implements Generate {
 
   private final String filePath;
 
+  /**
+   * A constructor for GenerateExercise that splits a txt file by line for each exercise.
+   * @param filePath
+   */
   public GenerateExercise(String filePath) {
     this.contents = new ArrayList<>();
     try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
@@ -48,15 +53,39 @@ public class GenerateExercise implements Generate {
     }
   }
 
-  //Need to add function to allow for the transference of text to Muscles Enum Constant.
+  /**
+   * A helper method for turning a string into a Muscle enum.
+   * @param s The string being checked.
+   * @return The muscle list.
+   * @throws IllegalArgumentException Thrown when no muscles are present in the string.
+   */
+  private List<Muscles> stringToMuscle(String s) throws IllegalArgumentException {
+    String[] split = s.split(",");
+    List<Muscles> musc = new ArrayList<>();
+    for (String x : split) {
+      for (Muscles m: Muscles.values()) {
+        if (x.equals(m.name())) {
+          musc.add(m);
+        }
+      }
+    }
+    if (musc.isEmpty()) {
+      throw new IllegalArgumentException("No Muscle Group Specified.");
+    }
+    return musc;
+  }
+
   @Override
   public List<Exercise> getExercises() throws IllegalArgumentException {
     List<Exercise> options = new ArrayList<>();
     String[] splited;
     for (String content : contents) {
       splited = content.split("-");
-
-      options.add(new ExerciseBuild(splited[0], splited[2], splited[1]);
+      options.add(new ExerciseBuild(splited[0], stringToMuscle(splited[2]), splited[1]));
     }
+    if (options.isEmpty()) {
+      throw new IllegalArgumentException("No exercises available");
+    }
+    return options;
   }
 }

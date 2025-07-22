@@ -71,32 +71,32 @@ public class ExerciseBuild implements Exercise {
 
   @Override
   public List<Muscles> getMuscle() {
-    return null;
+    return this.musclesList;
   }
 
   @Override
   public String getDescription() {
-    return null;
+    return this.description;
   }
 
   @Override
   public String getName() {
-    return null;
+    return this.name;
   }
 
   @Override
   public int getSets() {
-    return 0;
+    return this.sets;
   }
 
   @Override
   public int getReps() {
-    return 0;
+    return this.reps;
   }
 
   @Override
   public int getWeight() {
-    return 0;
+    return this.weight;
   }
 
   /**
