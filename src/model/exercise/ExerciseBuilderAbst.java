@@ -26,9 +26,9 @@ abstract class ExerciseBuilderAbst {
    * @param setNum The new set number as an integer.
    * @return The updated ExerciseBuilderAbst object.
    */
-  public ExerciseBuilderAbst changeSets(int setNum) {
+  public ExerciseBuild.ExerciseBuilder changeSets(int setNum) {
     this.sets = setNum;
-    return this;
+    return (ExerciseBuild.ExerciseBuilder) this;
   }
 
   /**
@@ -36,9 +36,9 @@ abstract class ExerciseBuilderAbst {
    * @param repNum The new rep number as an integer.
    * @return The updated ExerciseBuilderAbst object.
    */
-  public ExerciseBuilderAbst changeReps(int repNum) {
+  public ExerciseBuild.ExerciseBuilder changeReps(int repNum) {
     this.reps = repNum;
-    return this;
+    return (ExerciseBuild.ExerciseBuilder) this;
   }
 
   /**
@@ -46,14 +46,14 @@ abstract class ExerciseBuilderAbst {
    * @param weightNum The amount of weight in lbs as an integer.
    * @return The updated ExerciseBuilderAbst object.
    */
-  public ExerciseBuilderAbst changeWeight(int weightNum) {
+  public ExerciseBuild.ExerciseBuilder changeWeight(int weightNum) {
     this.weight = weightNum;
-    return this;
+    return (ExerciseBuild.ExerciseBuilder) this;
   }
 
   /**
    * A method that creates an ExerciseBuild object with the updated changes.
    * @return A new ExerciseBuild object with the updated changes.
    */
-  public abstract ExerciseBuild build();
+  public abstract Exercise build();
 }

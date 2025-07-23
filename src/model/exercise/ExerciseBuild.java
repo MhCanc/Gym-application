@@ -107,7 +107,7 @@ public class ExerciseBuild implements Exercise {
      * A constructor for ExerciseBuilder.
      * @param exercise The ExerciseBuild object being changed.
      */
-    public ExerciseBuilder(ExerciseBuild exercise) {
+    public ExerciseBuilder(Exercise exercise) {
       this.name = exercise.getName();
       this.musclesList = exercise.getMuscle();
       this.description = exercise.getDescription();
@@ -117,7 +117,7 @@ public class ExerciseBuild implements Exercise {
     }
 
     @Override
-    public ExerciseBuild build() {
+     public Exercise build() {
       return new ExerciseBuild(this.name, this.musclesList, this.description,
               this.sets, this.reps, this.weight);
     }
