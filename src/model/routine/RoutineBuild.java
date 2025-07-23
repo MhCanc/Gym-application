@@ -11,13 +11,13 @@ public class RoutineBuild implements Routine{
 
   private final List<Exercise> routine;
   private final List<Exercise> available;
-  private final GenerateExercise file = new GenerateExercise("model/RecordedExercises");
 
   /**
    * A constructor for the RoutineBuild Class.
    */
   public RoutineBuild(){
     routine = new ArrayList<>();
+    GenerateExercise file = new GenerateExercise("model/RecordedExercises");
     available = file.getExercises();
   }
 
@@ -66,4 +66,13 @@ public class RoutineBuild implements Routine{
     }
     throw new IllegalArgumentException("No Exercise sets changed.");
   }
+  @Override
+  public void clearAllExercises(){
+    routine.clear();
+  }
+  @Override
+  public List<Exercise> getRoutine(){
+    return new ArrayList<>(routine);
+  }
+
 }
