@@ -1,8 +1,7 @@
 package model.routine;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -23,17 +22,16 @@ public class MultipleRoutines implements MultipleRoutine{
   }
 
   @Override
-  public void removeRoutine(String name) {
+  public void removeRoutine(String name) throws IllegalArgumentException {
     if (allRoutines.containsKey(name)) {
       allRoutines.remove(name);
     } else {
       throw new IllegalArgumentException("Routine does not exist.");
     }
-
   }
 
   @Override
-  public Routine getRoutine(String name) {
+  public Routine getRoutine(String name) throws IllegalArgumentException {
     if (allRoutines.containsKey(name)) {
       return allRoutines.get(name);
     }
@@ -42,6 +40,9 @@ public class MultipleRoutines implements MultipleRoutine{
 
   @Override
   public Set<String> getAllNames() {
-    return allRoutines.keySet();
+    if (allRoutines.keySet().isEmpty()) {
+      throw new IllegalArgumentException("No routines recorded.");
+    }
+    return new HashSet<>(allRoutines.keySet());
   }
 }

@@ -68,12 +68,10 @@ public class ExerciseBuild implements Exercise {
       throw new IllegalArgumentException("Cannot have a null variable");
     }
   }
-
   @Override
   public List<Muscles> getMuscle() {
     return this.musclesList;
   }
-
   @Override
   public String getDescription() {
     return this.description;
