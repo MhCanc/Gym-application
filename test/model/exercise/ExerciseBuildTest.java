@@ -9,12 +9,15 @@ import java.util.List;
 import model.Muscles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ExerciseBuildTest {
   private Exercise test;
+
+  private List<Muscles> list;
   @BeforeEach
   public void startUp() {
-    List<Muscles> list = new ArrayList<>();
+    list = new ArrayList<>();
     list.add(Muscles.CHEST);
     this.test = new ExerciseBuild("NAme", list,
             "A Test Exercise");
@@ -28,10 +31,8 @@ class ExerciseBuildTest {
       this.test = new ExerciseBuild("NAme", new ArrayList<>(),
               "A Test Exercise");
     } catch (IllegalArgumentException e) {
-      List<Muscles> list = new ArrayList<>();
-      list.add(Muscles.CHEST);
-      assertEquals(new ExerciseBuild("NAme", list,
-              "A Test Exercise"), test);
+      assertTrue(new ExerciseBuild("NAme", list,
+              "A Test Exercise").equals(test));
     }
   }
 
