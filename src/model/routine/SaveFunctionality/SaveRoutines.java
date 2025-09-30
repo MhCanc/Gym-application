@@ -1,4 +1,6 @@
-package model.routine;
+package model.routine.SaveFunctionality;
+
+import model.routine.MultipleRoutineHandling.MultipleRoutine;
 
 public interface SaveRoutines {
 
@@ -8,7 +10,6 @@ public interface SaveRoutines {
    * @param routines The current multipleRoutine object being stored.
    */
   void writeRoutines(MultipleRoutine routines);
-
 
 
 

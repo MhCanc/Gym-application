@@ -1,6 +1,8 @@
-package model.routine;
+package model.routine.MultipleRoutineHandling;
 
 import java.util.Set;
+
+import model.routine.Routine;
 
 public interface MultipleRoutine {
   /**

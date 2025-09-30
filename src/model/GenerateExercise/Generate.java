@@ -22,4 +22,11 @@ public interface Generate {
    *      is unreadable.
    */
   List<Exercise> getExercises() throws IllegalArgumentException;
+
+  /**
+   * A method that removes an exercise from RecordedExercises.
+   * @param name The name of the exercise to be removed.
+   * @throws IllegalArgumentException Thrown when an exercise of the name does not exist.
+   */
+  void removeExerciseTxt(String name) throws IllegalArgumentException;
 }

@@ -14,6 +14,9 @@ import model.Muscles;
 import model.exercise.Exercise;
 import model.exercise.ExerciseBuild;
 
+/**
+ * A class that reads the exercises stored in RecordedExercises,
+ */
 public class GenerateExercise implements Generate {
 
   private final List<String> contents;
@@ -22,7 +25,7 @@ public class GenerateExercise implements Generate {
 
   /**
    * A constructor for GenerateExercise that splits a txt file by line for each exercise.
-   * @param filePath
+   * @param filePath The filepath to the file holding the recorded exercises.
    */
   public GenerateExercise(String filePath) {
     this.contents = new ArrayList<>();
@@ -88,4 +91,18 @@ public class GenerateExercise implements Generate {
     }
     return options;
   }
+
+  //Need to add functionality to rewrite the
+  @Override
+  public void removeExerciseTxt(String name) throws IllegalArgumentException {
+    List<String> current = new ArrayList<>(contents);
+    String[] splited;
+    for (String content : contents) {
+      splited = content.split("-");
+      current.remove(content);
+    }
+    throw new IllegalArgumentException("No exercise of this name exists.");
+  }
+
+
 }

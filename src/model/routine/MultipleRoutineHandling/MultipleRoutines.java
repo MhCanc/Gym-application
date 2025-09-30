@@ -1,9 +1,12 @@
-package model.routine;
+package model.routine.MultipleRoutineHandling;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+
+import model.routine.Routine;
+import model.routine.RoutineBuild;
 
 
 public class MultipleRoutines implements MultipleRoutine{

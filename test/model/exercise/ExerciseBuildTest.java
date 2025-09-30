@@ -9,7 +9,6 @@ import java.util.List;
 import model.Muscles;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ExerciseBuildTest {
   private Exercise test;
@@ -42,6 +41,7 @@ class ExerciseBuildTest {
 
   @Test
   public void getDescriptionTest() {
+
     assertEquals("A Test Exercise", test.getDescription());
   }
 

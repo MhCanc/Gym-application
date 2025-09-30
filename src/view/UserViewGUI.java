@@ -26,7 +26,7 @@ public class UserViewGUI {
   private final JMenu routines;
 
   private final JMenu mealPlan;
-
+  //Need to break into various different classes for each part of the GUI
   public UserViewGUI() {
     frame = new JFrame("PUMP");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

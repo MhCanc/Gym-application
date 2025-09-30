@@ -1,8 +1,9 @@
-package model.routine;
+package model.routine.Automatic;
 
 import java.util.List;
 
 import model.Muscles;
+import model.routine.Routine;
 
 public class AutoBuildRoutineImpl implements AutoBuildRoutine{
   @Override
