@@ -98,6 +98,16 @@ public class ExerciseBuild implements Exercise {
     return this.weight;
   }
 
+  @Override
+  public boolean equals(Object o) throws IllegalArgumentException {
+    if (o instanceof Exercise n) {
+      return (this.name.equals(n.getName()) && this.description.equals(n.getDescription()) &&
+              this.musclesList.equals(n.getMuscle()) && this.sets == n.getSets() && this.reps
+              == n.getReps() && this.weight == n.getWeight());
+    }
+    throw new IllegalArgumentException("Incorrect Object Type");
+  }
+
   /**
    * A class that allows for variables in the ExerciseBuild class to be changed without mutation.
    */
@@ -114,17 +124,6 @@ public class ExerciseBuild implements Exercise {
       this.reps = exercise.getReps();
       this.weight = exercise.getWeight();
     }
-    //fix to work properly
-    @Override
-    public boolean equals(Object o) throws IllegalArgumentException {
-      if (o instanceof Exercise n) {
-        return (this.name.equals(n.getName()) && this.description.equals(n.getDescription()) &&
-              this.musclesList.equals(n.getMuscle()) && this.sets == n.getSets() && this.reps
-              == n.getReps() && this.weight == n.getWeight());
-      }
-      throw new IllegalArgumentException("Incorrect Object Type");
-    }
-
 
     @Override
      public Exercise build() {

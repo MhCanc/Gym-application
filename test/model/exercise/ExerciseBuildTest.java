@@ -24,15 +24,14 @@ class ExerciseBuildTest {
   }
 
 
-  //Need to add an equals method to compare exercises.
   @Test
   public void invalidMuscleListInputTest() {
     try {
-      this.test = new ExerciseBuild("NAme", new ArrayList<>(),
+      Exercise broken = new ExerciseBuild("NAme", new ArrayList<>(),
               "A Test Exercise");
     } catch (IllegalArgumentException e) {
-      assertTrue(new ExerciseBuild("NAme", list,
-              "A Test Exercise").equals(test));
+      assertEquals(new ExerciseBuild("NAme", list,
+              "A Test Exercise"), test);
     }
   }
 
