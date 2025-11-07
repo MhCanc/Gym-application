@@ -7,7 +7,10 @@ import model.GenerateExercise.GenerateExercise;
 import model.exercise.Exercise;
 import model.exercise.ExerciseBuild;
 
-public class RoutineBuild implements Routine{
+/**
+ * A method implementing the Routine object.
+ */
+public class RoutineBuild implements Routine {
 
   private final List<Exercise> routine;
   private final List<Exercise> available;
@@ -66,10 +69,12 @@ public class RoutineBuild implements Routine{
     }
     throw new IllegalArgumentException("No Exercise sets changed.");
   }
+
   @Override
   public void clearAllExercises(){
     routine.clear();
   }
+
   @Override
   public List<Exercise> getRoutine(){
     return new ArrayList<>(routine);

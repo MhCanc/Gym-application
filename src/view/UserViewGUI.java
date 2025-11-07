@@ -1,8 +1,6 @@
 package view;
 
 import java.awt.*;
-import java.time.YearMonth;
-import java.time.ZoneId;
 
 import javax.swing.*;
 
@@ -14,34 +12,25 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.DefaultComboBoxModel;
 
+import static javax.swing.SwingConstants.NORTH;
+
 public class UserViewGUI {
 
-  private final JFrame frame;
-  private YearMonth currentMonth;
-  private String selectedCalendar;
-  private final JMenuBar options;
-  private final JMenu create;
-  private final JMenu routines;
-  private final JMenu mealPlan;
+  private final UserFrame frame;
+  private final UserMenu menu;
   //Need to break into various different classes for each part of the GUI
   public UserViewGUI() {
-    frame = new JFrame("PUMP");
-    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setExtendedState(Frame.MAXIMIZED_BOTH);
-    frame.setLayout(new BorderLayout());
-    routines = new JMenu("Routines");
-    create = new JMenu("Create");
-    create.add(new JMenuItem("Build a new routine"));
-    create.add(new JMenuItem("Add a new Exercise"));
-    mealPlan = new JMenu("Meal Plans");
-    mealPlan.add(new JMenuItem("Create New Meal Plan"));
-    mealPlan.add(new JMenuItem("Edit Meal Plans"));
-    options = new JMenuBar();
-    options.add(routines);
-    options.add(create);
-    options.add(mealPlan);
-    frame.add(options, BorderLayout.NORTH);
-    frame.setVisible(true);
+    frame = new UserFrame();
+    menu = new UserMenu();
+    menu.addMenu("Routines");
+    menu.addMenu("Create");
+    menu.addMenu("Meal Plan");
+//    menu.addMenuItem(1, "Create New Routine", );
+//    menu.addMenuItem(1, "Add New Exercise", );
+//    menu.addMenuItem(2, "Create New Meal Plan", );
+//    menu.addMenuItem(2, "Edit Meal Plan", );
+    frame.addToLayout(BorderLayout.NORTH, menu.getMenuBar());
+    frame.visible();
   }
 
 }
