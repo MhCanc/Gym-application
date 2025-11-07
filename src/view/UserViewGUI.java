@@ -2,24 +2,17 @@ package view;
 
 import java.awt.*;
 
-import javax.swing.*;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JComboBox;
-import javax.swing.JOptionPane;
-import javax.swing.DefaultComboBoxModel;
-
-import static javax.swing.SwingConstants.NORTH;
+import controller.Controller;
+import controller.GuiController;
 
 public class UserViewGUI {
 
+  private final Controller controller;
   private final UserFrame frame;
   private final UserMenu menu;
   //Need to break into various different classes for each part of the GUI
   public UserViewGUI() {
+    controller = new GuiController();
     frame = new UserFrame();
     menu = new UserMenu();
     menu.addMenu("Routines");
