@@ -27,7 +27,7 @@ public class UserViewGUI {
   public UserViewGUI() {
     frame = new JFrame("PUMP");
     frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    frame.setSize(1980, 1080);
+    frame.setExtendedState(Frame.MAXIMIZED_BOTH);
     frame.setLayout(new BorderLayout());
     routines = new JMenu("Routines");
     create = new JMenu("Create");
@@ -41,13 +41,7 @@ public class UserViewGUI {
     options.add(create);
     options.add(mealPlan);
     frame.add(options, BorderLayout.NORTH);
-
-
-
     frame.setVisible(true);
-
-
-
   }
 
 }

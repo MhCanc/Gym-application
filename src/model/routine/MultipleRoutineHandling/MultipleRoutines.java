@@ -17,11 +17,11 @@ public class MultipleRoutines implements MultipleRoutine{
   }
 
   @Override
-  public void addRoutine(String name) throws IllegalArgumentException {
+  public void addRoutine(String name, Routine r) throws IllegalArgumentException {
     if (allRoutines.containsKey(name)) {
       throw new IllegalArgumentException("Routine already exists.");
     }
-    allRoutines.put(name, new RoutineBuild());
+    allRoutines.put(name, r);
   }
 
   @Override

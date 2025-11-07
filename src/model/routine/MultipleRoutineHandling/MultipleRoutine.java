@@ -8,8 +8,9 @@ public interface MultipleRoutine {
   /**
    * Adds a new routine.
    * @param name The name of the routine.
+   * @param routine the Routine object.
    */
-  void addRoutine(String name);
+  void addRoutine(String name, Routine routine);
 
   /**
    * Removes a routine.
