@@ -1,6 +1,5 @@
 package controller;
 
-import javax.swing.*;
 
 import view.UserViewGUI;
 

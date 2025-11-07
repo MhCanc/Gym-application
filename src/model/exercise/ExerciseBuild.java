@@ -11,13 +11,9 @@ public class ExerciseBuild implements Exercise {
   private final String name;
   private final List<Muscles> musclesList;
   private final String description;
-
   private final int sets;
-
   private final int reps;
-
   private final int weight;
-
 
   /**
    * A constructor for the ExerciseBuild class.

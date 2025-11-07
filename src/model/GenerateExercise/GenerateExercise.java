@@ -7,7 +7,6 @@ import java.io.Writer;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import model.Muscles;
@@ -92,17 +91,32 @@ public class GenerateExercise implements Generate {
     return options;
   }
 
-  //Need to add functionality to rewrite the
+  //Overwrites file
   @Override
   public void removeExerciseTxt(String name) throws IllegalArgumentException {
     List<String> current = new ArrayList<>(contents);
     String[] splited;
-    for (String content : contents) {
+    Writer output;
+    StringBuilder add = new StringBuilder();
+    for (String content : current) {
       splited = content.split("-");
-      current.remove(content);
+      if (splited[0].equals(name)) {
+        contents.remove(content);
+        break;
+      }
     }
-    throw new IllegalArgumentException("No exercise of this name exists.");
+    if (current.size() == contents.size()) {
+      throw new IllegalArgumentException("No exercise of this name exists.");
+    }
+    try {
+      output = new BufferedWriter(new FileWriter(this.filePath));
+      for (String content: contents) {
+        add.append(content).append("\n");
+      }
+      output.append(add);
+      output.close();
+    } catch (IOException e) {
+      throw new IllegalArgumentException();
+    }
   }
-
-
 }

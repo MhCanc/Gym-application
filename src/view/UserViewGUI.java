@@ -19,12 +19,9 @@ public class UserViewGUI {
   private final JFrame frame;
   private YearMonth currentMonth;
   private String selectedCalendar;
-
   private final JMenuBar options;
-
   private final JMenu create;
   private final JMenu routines;
-
   private final JMenu mealPlan;
   //Need to break into various different classes for each part of the GUI
   public UserViewGUI() {
