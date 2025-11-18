@@ -1,11 +1,10 @@
 package view;
-import java.util.concurrent.atomic.AtomicReference;
 
 import javax.swing.*;
 /**
  * A class that handles the user inputs for the program.
  */
-public class GUIRequests {
+public class GUIPopUp {
 
   /**
    * Prompts the user for a string response.
@@ -33,6 +32,14 @@ public class GUIRequests {
     );
   }
 
+  public void popUpMessage(String message) {
+    JOptionPane.showMessageDialog(
+            null, // Parent component (can be null)
+            message,  // The content to display (our scrollable read-only text area)
+            "Error", // Title of the dialog
+            JOptionPane.INFORMATION_MESSAGE // Message type (for the icon)
+    );
+  }
 
 
 }

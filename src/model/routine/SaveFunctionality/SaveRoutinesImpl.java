@@ -4,10 +4,18 @@ import org.json.simple.*;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
+import java.io.BufferedReader;
+import java.io.EOFException;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 
 import model.routine.MultipleRoutineHandling.MultipleRoutine;
@@ -17,29 +25,36 @@ import model.routine.Routine;
 /**
  * The implementation of the save routine functionality.
  */
-public class SaveRoutinesImpl implements SaveRoutines {
-  private final MultipleRoutine allRoutines;
+public class SaveRoutinesImpl implements SaveRoutines, Serializable {
+  private MultipleRoutine allRoutines;
+  private List<Routine> contents;
+
   public SaveRoutinesImpl() {
-    allRoutines = new MultipleRoutines();
+    allRoutines = new MultipleRoutines(new ArrayList<>());
   }
 
+  //Need to break Routine object into recordable information.
   @Override
-  public void gatherRoutines() {
-    try {
-      FileReader read = new FileReader("routines.json");
-      JSONParser parser = new JSONParser();
-      JSONArray array = (JSONArray) parser.parse(read);
-      read.close();
-      for (Object o : array) {
-        JSONObject j = (JSONObject) o;
-        String response = (String) j.get("Name");
-        Routine currentRoutine = (Routine) j.get("Routine");
-        long num = (long) j.get("num");
-        allRoutines.addRoutine(response, currentRoutine);
+  public MultipleRoutine gatherRoutines() {
+    this.contents = new ArrayList<>();
+    try (FileInputStream fileIn =
+                 new FileInputStream("Gym-Application/src/model/routines.txt");
+         ObjectInputStream in = new ObjectInputStream(fileIn)) {
+
+      while (true) {
+        try {
+          Routine obj = (Routine) in.readObject();
+          contents.add(obj);
+        } catch (EOFException e) {
+          break;
+        }
       }
-    } catch (ParseException | IOException e) {
-      throw new RuntimeException(e);
+
+    } catch (IOException | ClassNotFoundException e) {
+      e.printStackTrace();
     }
+    allRoutines = new MultipleRoutines(contents);
+    return allRoutines;
   }
   @Override
   public void writeRoutine(String name, Routine routine) {
@@ -48,20 +63,15 @@ public class SaveRoutinesImpl implements SaveRoutines {
 
   @Override
   public void updateRoutines() throws RuntimeException {
-    try {
-      JSONArray jarr = new JSONArray();
-      for (String name : allRoutines.getAllNames()) {
-        JSONObject enter = new JSONObject();
-        enter.put("Name", name);
-        enter.put("Routine", allRoutines.getRoutine(name));
-        jarr.add(enter);
+    try (ObjectOutputStream out = new ObjectOutputStream(
+            new FileOutputStream("Gym-Application/src/model/routines.txt"))) {
+
+      for (String s : allRoutines.getAllNames()) {
+        out.writeObject(allRoutines.getRoutine(s));
       }
-      FileWriter writer = new FileWriter("routines.json");
-      writer.write(jarr.toJSONString());
-      writer.flush();
-      writer.close();
+
     } catch (IOException e) {
-      throw new RuntimeException("File not responding");
+      e.printStackTrace();
     }
   }
 

@@ -62,7 +62,9 @@ public class GenerateExercise implements Generate {
    * @throws IllegalArgumentException Thrown when no muscles are present in the string.
    */
   private List<Muscles> stringToMuscle(String s) throws IllegalArgumentException {
-    String[] split = s.split(",");
+    String str = s.replaceAll("\\[", "");
+    str = str.replaceAll("]", "");
+    String[] split = str.split(",");
     List<Muscles> musc = new ArrayList<>();
     for (String x : split) {
       for (Muscles m: Muscles.values()) {
@@ -109,7 +111,7 @@ public class GenerateExercise implements Generate {
       throw new IllegalArgumentException("No exercise of this name exists.");
     }
     try {
-      output = new BufferedWriter(new FileWriter(this.filePath));
+      output = new FileWriter(this.filePath);
       for (String content: contents) {
         add.append(content).append("\n");
       }

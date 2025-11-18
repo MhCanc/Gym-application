@@ -16,10 +16,12 @@ public class UserViewGUI {
     frame = new UserFrame();
     menu = new UserMenu();
     menu.addMenu("Routines");
-    menu.addMenu("Create");
+    menu.addMenu("Exercises");
     menu.addMenu("Meal Plan");
-//    menu.addMenuItem(1, "Create New Routine", );
-//    menu.addMenuItem(1, "Add New Exercise", );
+    menu.addMenuItem(0, "Create New Routine", e -> controller.createNewRoutine());
+    menu.addMenuItem(0, "Delete Routine", e -> controller.deleteRoutine());
+    menu.addMenuItem(1, "Add New Exercise", e -> controller.addNewExercise());
+    menu.addMenuItem(1, "Remove Exercise", e -> controller.deleteExercise());
 //    menu.addMenuItem(2, "Create New Meal Plan", );
 //    menu.addMenuItem(2, "Edit Meal Plan", );
     frame.addToLayout(BorderLayout.NORTH, menu.getMenuBar());

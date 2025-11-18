@@ -13,16 +13,15 @@ public interface Routine {
 
   /**
    * A method adding an exercise into the routine.
-   * @param name The name of the exercise.
+   * @param e The exercise being added.
    */
-  void addExercise(String name) throws IllegalArgumentException;
-
+  void addExercise(Exercise e) throws IllegalArgumentException;
 
   /**
    * A method removing an exercise from the routine.
-   * @param name The name of the exercise.
+   * @param e The exercise being removed.
    */
-  void removeExercise(String name) throws IllegalArgumentException;
+  void removeExercise(Exercise e) throws IllegalArgumentException;
 
   /**
    * A method removing all exercises from the current routine.
@@ -46,5 +45,11 @@ public interface Routine {
    * @return A list of all exercises in the routine.
    */
   List<Exercise> getRoutine();
+
+  /**
+   * A method returning the name of the routine.
+   * @return A string representation of the name.
+   */
+  String getName();
 
 }

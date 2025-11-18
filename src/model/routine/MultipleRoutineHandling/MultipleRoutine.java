@@ -1,5 +1,6 @@
 package model.routine.MultipleRoutineHandling;
 
+import java.util.List;
 import java.util.Set;
 
 import model.routine.Routine;
@@ -29,5 +30,5 @@ public interface MultipleRoutine {
    * Gets the names of all created routines.
    * @return The names of all routines in a list of Strings.
    */
-  Set<String> getAllNames();
+  List<String> getAllNames();
 }

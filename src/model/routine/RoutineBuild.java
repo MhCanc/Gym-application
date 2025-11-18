@@ -1,5 +1,7 @@
 package model.routine;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,40 +12,36 @@ import model.exercise.ExerciseBuild;
 /**
  * A method implementing the Routine object.
  */
-public class RoutineBuild implements Routine {
-
+public class RoutineBuild implements Routine, Serializable {
+  @Serial
+  private static final long serialVersionUID = 1L;
   private final List<Exercise> routine;
-  private final List<Exercise> available;
+  private final String name;
 
   /**
    * A constructor for the RoutineBuild Class.
    */
-  public RoutineBuild(){
+  public RoutineBuild(String name){
+    this.name = name;
     routine = new ArrayList<>();
-    GenerateExercise file = new GenerateExercise("model/RecordedExercises");
-    available = file.getExercises();
   }
 
   @Override
-  public void addExercise(String name) throws IllegalArgumentException {
-    for (Exercise e: available) {
-      if (e.getName().equals(name)) {
+  public void addExercise(Exercise e) throws IllegalArgumentException {
+      if (!routine.contains(e)) {
         routine.add(e);
-        return;
+      } else {
+        throw new IllegalArgumentException("Exercise already present");
       }
-    }
-    throw new IllegalArgumentException("Exercise does not exist");
   }
 
   @Override
-  public void removeExercise(String name) {
-    for (Exercise e: routine) {
-      if (e.getName().equals(name)) {
-        routine.remove(e);
-        return;
-      }
+  public void removeExercise(Exercise e) {
+    if (routine.contains(e)) {
+      routine.remove(e);
+    } else {
+      throw new IllegalArgumentException("Exercise does not exist");
     }
-    throw new IllegalArgumentException("Exercise does not exist to be removed");
   }
 
   @Override
@@ -80,4 +78,8 @@ public class RoutineBuild implements Routine {
     return new ArrayList<>(routine);
   }
 
+  @Override
+  public String getName() {
+    return this.name;
+  }
 }

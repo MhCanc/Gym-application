@@ -1,5 +1,6 @@
 package model.routine.SaveFunctionality;
 
+import model.routine.MultipleRoutineHandling.MultipleRoutine;
 import model.routine.Routine;
 
 /**
@@ -18,7 +19,7 @@ public interface SaveRoutines {
   /**
    * Reads and gathers all routines from json file.
    */
-  void gatherRoutines();
+  MultipleRoutine gatherRoutines();
 
   /**
    * Updates the json file with the new values.
